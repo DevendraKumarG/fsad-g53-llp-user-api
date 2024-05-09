@@ -1,14 +1,16 @@
 ﻿using UserService.DTOs;
+using UserService.Models;
 
 namespace UserService.Services.Contracts
 {
     public interface IUserService
     {
-        Task GetAssessmentResults(string userId);
-        Task GetLearningProgress(string userId);
-        Task GetUserProfile(string userId);
-        Task Login(UserLoginRequest request);
-        Task Register(UserRegisterRequest request);
-        Task UpdateLanguagePreference(string userId, UserPreferenceRequest request);
+        Task<AssessmentResultsResponse> GetAssessmentResults(int userId);
+        Task<Bookmark> GetLearningProgress(int userId);
+        Task UpdateLearningProgress(int userId, Bookmark request);
+        Task<UserProfileResponse> GetUserProfile(int userId);
+        Task<UserLoginResponse> Login(UserLoginRequest request);
+        Task<UserRegisterResponse> Register(UserRegisterRequest request);
+        Task UpdateLanguagePreference(int userId, UserPreferenceRequest request);
     }
 }

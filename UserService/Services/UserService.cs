@@ -1,4 +1,5 @@
 ﻿using UserService.DTOs;
+using UserService.Models;
 using UserService.Repositories.Contracts;
 using UserService.Services.Contracts;
 
@@ -15,34 +16,41 @@ namespace UserService.Services
             _repositoryManager = repositoryManager;
         }
 
-        public Task GetAssessmentResults(string userId)
+        public Task<UserLoginResponse> Login(UserLoginRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public Task GetLearningProgress(string userId)
+        public Task<UserRegisterResponse> Register(UserRegisterRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public Task GetUserProfile(string userId)
+        public Task<UserProfileResponse> GetUserProfile(int userId)
         {
             throw new NotImplementedException();
         }
 
-        public Task Login(UserLoginRequest request)
+        public Task UpdateLanguagePreference(int userId, UserPreferenceRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public Task Register(UserRegisterRequest request)
+        public Task UpdateLearningProgress(int userId, Bookmark request)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateLanguagePreference(string userId, UserPreferenceRequest request)
+        public Task<Bookmark> GetLearningProgress(int userId)
         {
             throw new NotImplementedException();
         }
+
+        public Task<AssessmentResultsResponse> GetAssessmentResults(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }
