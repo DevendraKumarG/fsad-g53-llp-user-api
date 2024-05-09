@@ -2,5 +2,8 @@
 {
     public interface IRepositoryManager
     {
+        IUserRepository User { get; }
+        IBookmarkRepository Bookmark { get; }
+        ILanguageRepository Language { get; }
     }
 }

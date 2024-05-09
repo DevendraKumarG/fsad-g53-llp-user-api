@@ -15,7 +15,7 @@ namespace UserService.Repositories
         // public DbSet<LanguageSection> LanguageSections { get; set; }
         public DbSet<Bookmark> Bookmarks { get; set; }
         // public DbSet<Assessment> Assessments { get; set; }
-        public DbSet<Results> Results { get; set; }
+        public DbSet<Result> Results { get; set; }
     }
 
 }

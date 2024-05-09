@@ -1,6 +1,9 @@
-﻿namespace UserService.Repositories.Contracts
+﻿using UserService.Models;
+
+namespace UserService.Repositories.Contracts
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepositoryBase<User>
     {
+
     }
 }

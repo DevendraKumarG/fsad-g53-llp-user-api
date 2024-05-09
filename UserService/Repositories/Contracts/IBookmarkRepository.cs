@@ -1,6 +1,8 @@
-﻿namespace UserService.Repositories.Contracts
+﻿using UserService.Models;
+
+namespace UserService.Repositories.Contracts
 {
-    public interface IBookmarkRepository
+    public interface IBookmarkRepository : IRepositoryBase<Bookmark>
     {
     }
 }
