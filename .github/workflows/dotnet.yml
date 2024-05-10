@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
      run:
-      working-directory: $GITHUB_WORKSPACE/UserService/
+      working-directory: /home/runner/work/fsad-g53-llp-user-api/fsad-g53-llp-user-api/UserService/
 
     steps:
     - uses: actions/checkout@v4
