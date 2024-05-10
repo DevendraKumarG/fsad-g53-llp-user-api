@@ -1,5 +1,7 @@
 # fsad-g53-llp-user-api
 
+[![.NET](https://github.com/DevendraKumarG/fsad-g53-llp-user-api/actions/workflows/dotnet.yml/badge.svg)](https://github.com/DevendraKumarG/fsad-g53-llp-user-api/actions/workflows/dotnet.yml)
+
 ## Prerequisites
 - **.NET 8 SDK**: [Download here](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - **MySQL Server**: [Download here](https://dev.mysql.com/downloads/mysql/)
