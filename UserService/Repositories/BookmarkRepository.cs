@@ -1,4 +1,5 @@
-﻿using UserService.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using UserService.Models;
 using UserService.Repositories.Contracts;
 
 namespace UserService.Repositories
@@ -7,6 +8,11 @@ namespace UserService.Repositories
     {
         public BookmarkRepository(LlpDbContext context, ILogger<LlpDbContext> logger) : base(context, logger)
         {
+        }
+
+        public Task<Bookmark> GetBookmarkByUserId(int userId)
+        {
+            return _context.Bookmarks.FirstOrDefaultAsync(b => b.UserId == userId);
         }
     }
 }

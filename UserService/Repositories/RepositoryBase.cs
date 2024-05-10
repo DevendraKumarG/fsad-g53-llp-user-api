@@ -27,10 +27,11 @@ namespace UserService.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task AddAsync(T entity)
+        public async Task<object> AddAsync(T entity)
         {
-            _ = await _context.Set<T>().AddAsync(entity);
+            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<T> record = await _context.Set<T>().AddAsync(entity);
             _ = await _context.SaveChangesAsync();
+            return record;
         }
 
         public async Task UpdateAsync(T entity)
@@ -43,6 +44,11 @@ namespace UserService.Repositories
         {
             _ = _context.Set<T>().Remove(entity);
             _ = await _context.SaveChangesAsync();
+        }
+
+        Task IRepositoryBase<T>.AddAsync(T entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

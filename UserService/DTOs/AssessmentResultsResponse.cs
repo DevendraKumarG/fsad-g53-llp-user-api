@@ -3,7 +3,7 @@
     public class AssessmentResultsResponse
     {
         public required int UserId { get; set; }
-        public required IEnumerable<AssessmentResult> Results { get; set; }
+        public required List<AssessmentResult> Results { get; set; }
 
     }
 

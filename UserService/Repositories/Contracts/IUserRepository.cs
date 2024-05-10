@@ -4,6 +4,6 @@ namespace UserService.Repositories.Contracts
 {
     public interface IUserRepository : IRepositoryBase<User>
     {
-
+        Task<User> GetUserByEmail(string email);
     }
 }

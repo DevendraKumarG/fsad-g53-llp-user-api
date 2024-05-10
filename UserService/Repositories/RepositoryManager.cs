@@ -6,6 +6,7 @@ namespace UserService.Repositories
     {
         private readonly LlpDbContext _context;
         private readonly ILogger<LlpDbContext> _logger;
+        private IResultRepository _resultRepository;
         private IUserRepository _userRepository;
         private IBookmarkRepository _bookmarkRepository;
         private ILanguageRepository _languageRepository;
@@ -40,6 +41,15 @@ namespace UserService.Repositories
             {
                 _languageRepository ??= new LanguageRepository(_context, _logger);
                 return _languageRepository;
+            }
+        }
+
+        public IResultRepository Result
+        {
+            get
+            {
+                _resultRepository ??= new ResultRepository(_context, _logger);
+                return _resultRepository;
             }
         }
     }

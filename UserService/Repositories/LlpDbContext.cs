@@ -11,10 +11,7 @@ namespace UserService.Repositories
 
         public DbSet<User> Users { get; set; }
         public DbSet<Language> Languages { get; set; }
-        // public DbSet<MediaType> MediaTypes { get; set; }
-        // public DbSet<LanguageSection> LanguageSections { get; set; }
         public DbSet<Bookmark> Bookmarks { get; set; }
-        // public DbSet<Assessment> Assessments { get; set; }
         public DbSet<Result> Results { get; set; }
     }
 

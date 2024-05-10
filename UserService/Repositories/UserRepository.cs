@@ -1,4 +1,5 @@
-﻿using UserService.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using UserService.Models;
 using UserService.Repositories.Contracts;
 
 namespace UserService.Repositories
@@ -7,6 +8,11 @@ namespace UserService.Repositories
     {
         public UserRepository(LlpDbContext context, ILogger<LlpDbContext> logger) : base(context, logger)
         {
+        }
+
+        public async Task<User> GetUserByEmail(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email) ?? throw new ArgumentNullException(nameof(email));
         }
     }
 }
