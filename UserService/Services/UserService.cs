@@ -1,14 +1,14 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Llp.User.DTOs;
+using Llp.User.Middleware;
+using Llp.User.Models;
+using Llp.User.Repositories.Contracts;
+using Llp.User.Services.Contracts;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using UserService.DTOs;
-using UserService.Middleware;
-using UserService.Models;
-using UserService.Repositories.Contracts;
-using UserService.Services.Contracts;
 
-namespace UserService.Services
+namespace Llp.User.Services
 {
     public class UserService : IUserService
     {
@@ -25,16 +25,25 @@ namespace UserService.Services
 
         public async Task<UserRegisterResponse> Register(UserRegisterRequest request)
         {
+
+            Models.User user = await _repositoryManager.User.GetUserByEmail(request.Email);
+
+            if (user != null)
+            {
+                throw new ValidationException("User with given email already exists.");
+            }
+
+
             // Create a new User object based on the request data
-            User user = new()
+            user = new()
             {
                 Email = request.Email,
                 EncryptedPassword = EncryptPassword(request.Password),
                 FirstName = request.FirstName,
-                LastName = request.LastName!,
-                LanguageId = request.LanguageId!.Value,
-                Contact = request.Contact!,
-                Address = request.Address!
+                LastName = request.LastName ?? "",
+                LanguageId = request.languageId,
+                Contact = request.Contact ?? "",
+                Address = request.Address ?? ""
             };
 
             // Add the user to the database
@@ -64,7 +73,7 @@ namespace UserService.Services
         public async Task<UserLoginResponse> Login(UserLoginRequest request)
         {
             // Retrieve user from the database based on the provided email
-            User user = await _repositoryManager.User.GetUserByEmail(request.Email);
+            Models.User user = await _repositoryManager.User.GetUserByEmail(request.Email);
 
             // Check if the user exists
             if (user == null)
@@ -101,7 +110,7 @@ namespace UserService.Services
         public async Task<UserProfileResponse> GetUserProfile(int userId)
         {
             // Retrieve user from the database based on the provided userId
-            User user = await _repositoryManager.User.GetByIdAsync(userId);
+            Models.User user = await _repositoryManager.User.GetByIdAsync(userId);
 
             // Check if the user exists
             if (user == null)
@@ -135,7 +144,7 @@ namespace UserService.Services
         public async Task UpdateLanguagePreference(int userId, UserPreferenceRequest request)
         {
             // Retrieve user from the database based on the provided userId
-            User user = await _repositoryManager.User.GetByIdAsync(userId);
+            Models.User user = await _repositoryManager.User.GetByIdAsync(userId);
 
             // Check if the user exists
             if (user == null)
@@ -152,7 +161,7 @@ namespace UserService.Services
         public async Task<AssessmentResultsResponse> GetAssessmentResults(int userId)
         {
             // Retrieve user from the database based on the provided userId
-            User user = await _repositoryManager.User.GetByIdAsync(userId);
+            Models.User user = await _repositoryManager.User.GetByIdAsync(userId);
 
             // Check if the user exists
             if (user == null)
@@ -172,6 +181,7 @@ namespace UserService.Services
             {
                 response.Results.Add(new AssessmentResult
                 {
+                    ResultId = result.ResultId,
                     AssessmentId = result.AssessmentId,
                     AttemptsCount = result.AttemptsCount,
                     Score = result.Score
@@ -186,7 +196,7 @@ namespace UserService.Services
         public async Task UpdateLearningProgress(int userId, Bookmark request)
         {
             // Retrieve user from the database based on the provided userId
-            User user = await _repositoryManager.User.GetByIdAsync(userId);
+            Models.User user = await _repositoryManager.User.GetByIdAsync(userId);
 
             // Check if the user exists
             if (user == null)

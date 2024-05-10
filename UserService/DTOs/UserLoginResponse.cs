@@ -1,4 +1,4 @@
-﻿namespace UserService.DTOs
+﻿namespace Llp.User.DTOs
 {
     public class UserLoginResponse
     {

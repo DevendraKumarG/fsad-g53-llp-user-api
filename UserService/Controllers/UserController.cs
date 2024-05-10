@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using UserService.DTOs;
-using UserService.Models;
-using UserService.Services.Contracts;
+﻿using Llp.User.DTOs;
+using Llp.User.Models;
+using Llp.User.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-namespace UserService.Controllers
+namespace Llp.User.Controllers
 {
     [ApiController]
     [Route("user")]
@@ -17,6 +18,7 @@ namespace UserService.Controllers
         }
 
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(UserRegisterRequest request)
         {
             UserRegisterResponse userDetails = await _userService.Register(request);
@@ -25,6 +27,7 @@ namespace UserService.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(UserLoginRequest request)
         {
             UserLoginResponse result = await _userService.Login(request);
@@ -33,6 +36,7 @@ namespace UserService.Controllers
         }
 
         [HttpGet("{userId}/profile")]
+        [Authorize]
         public async Task<IActionResult> GetUserProfile(int userId)
         {
             UserProfileResponse userDetails = await _userService.GetUserProfile(userId);
@@ -41,6 +45,7 @@ namespace UserService.Controllers
         }
 
         [HttpPut("{userId}/preference")]
+        [Authorize]
         public async Task<IActionResult> UpdateLanguagePreference(int userId, UserPreferenceRequest request)
         {
             await _userService.UpdateLanguagePreference(userId, request);
@@ -49,6 +54,7 @@ namespace UserService.Controllers
         }
 
         [HttpGet("{userId}/progress")]
+        [Authorize]
         public async Task<IActionResult> GetLearningProgress(int userId)
         {
             Bookmark bookmark = await _userService.GetLearningProgress(userId);
@@ -56,6 +62,7 @@ namespace UserService.Controllers
         }
 
         [HttpPost("{userId}/progress")]
+        [Authorize]
         public async Task<IActionResult> UpdateLearningProgress(int userId, [FromBody] Bookmark bookmark)
         {
             await _userService.UpdateLearningProgress(userId, bookmark);
@@ -64,6 +71,7 @@ namespace UserService.Controllers
         }
 
         [HttpGet("{userId}/results")]
+        [Authorize]
         public async Task<IActionResult> GetAssessmentResults(int userId)
         {
             AssessmentResultsResponse results = await _userService.GetAssessmentResults(userId);

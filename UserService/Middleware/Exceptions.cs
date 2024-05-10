@@ -1,4 +1,4 @@
-﻿namespace UserService.Middleware
+﻿namespace Llp.User.Middleware
 {
 
     // UnauthorizedException.cs

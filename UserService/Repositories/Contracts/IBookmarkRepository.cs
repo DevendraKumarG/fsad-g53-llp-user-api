@@ -1,6 +1,6 @@
-﻿using UserService.Models;
+﻿using Llp.User.Models;
 
-namespace UserService.Repositories.Contracts
+namespace Llp.User.Repositories.Contracts
 {
     public interface IBookmarkRepository : IRepositoryBase<Bookmark>
     {

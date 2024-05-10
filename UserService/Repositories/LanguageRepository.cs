@@ -1,7 +1,7 @@
-﻿using UserService.Models;
-using UserService.Repositories.Contracts;
+﻿using Llp.User.Models;
+using Llp.User.Repositories.Contracts;
 
-namespace UserService.Repositories
+namespace Llp.User.Repositories
 {
     public class LanguageRepository : RepositoryBase<Language>, ILanguageRepository
     {

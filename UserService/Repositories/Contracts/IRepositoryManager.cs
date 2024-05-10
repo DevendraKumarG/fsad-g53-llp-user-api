@@ -1,4 +1,4 @@
-﻿namespace UserService.Repositories.Contracts
+﻿namespace Llp.User.Repositories.Contracts
 {
     public interface IRepositoryManager
     {

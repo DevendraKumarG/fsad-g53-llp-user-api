@@ -1,9 +1,9 @@
-﻿using UserService.Models;
+﻿using Llp.User.Models;
 
-namespace UserService.Repositories.Contracts
+namespace Llp.User.Repositories.Contracts
 {
-    public interface IUserRepository : IRepositoryBase<User>
+    public interface IUserRepository : IRepositoryBase<Models.User>
     {
-        Task<User> GetUserByEmail(string email);
+        Task<Models.User> GetUserByEmail(string email);
     }
 }

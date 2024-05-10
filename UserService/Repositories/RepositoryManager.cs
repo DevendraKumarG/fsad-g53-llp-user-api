@@ -1,6 +1,6 @@
-﻿using UserService.Repositories.Contracts;
+﻿using Llp.User.Repositories.Contracts;
 
-namespace UserService.Repositories
+namespace Llp.User.Repositories
 {
     public class RepositoryManager : IRepositoryManager
     {

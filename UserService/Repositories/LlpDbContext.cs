@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using UserService.Models;
+using Llp.User.Models;
 
-namespace UserService.Repositories
+namespace Llp.User.Repositories
 {
     public class LlpDbContext : DbContext
     {
@@ -9,11 +9,9 @@ namespace UserService.Repositories
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Models.User> Users { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<Bookmark> Bookmarks { get; set; }
         public DbSet<Result> Results { get; set; }
     }
-
-}
 }

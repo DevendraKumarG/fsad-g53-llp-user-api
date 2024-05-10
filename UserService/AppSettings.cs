@@ -1,4 +1,4 @@
-﻿namespace UserService
+﻿namespace Llp.User
 {
     public class AppSettings
     {

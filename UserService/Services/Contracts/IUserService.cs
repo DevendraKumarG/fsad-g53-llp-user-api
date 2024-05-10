@@ -1,7 +1,7 @@
-﻿using UserService.DTOs;
-using UserService.Models;
+﻿using Llp.User.DTOs;
+using Llp.User.Models;
 
-namespace UserService.Services.Contracts
+namespace Llp.User.Services.Contracts
 {
     public interface IUserService
     {

@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using UserService.Repositories.Contracts;
+﻿using Llp.User.Repositories.Contracts;
+using Microsoft.EntityFrameworkCore;
 
-namespace UserService.Repositories
+namespace Llp.User.Repositories
 {
     public class RepositoryBase
     {
@@ -27,11 +27,10 @@ namespace UserService.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<object> AddAsync(T entity)
+        public async Task AddAsync(T entity)
         {
-            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<T> record = await _context.Set<T>().AddAsync(entity);
+            _ = await _context.Set<T>().AddAsync(entity);
             _ = await _context.SaveChangesAsync();
-            return record;
         }
 
         public async Task UpdateAsync(T entity)
@@ -44,11 +43,6 @@ namespace UserService.Repositories
         {
             _ = _context.Set<T>().Remove(entity);
             _ = await _context.SaveChangesAsync();
-        }
-
-        Task IRepositoryBase<T>.AddAsync(T entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

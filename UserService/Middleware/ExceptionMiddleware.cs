@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 
-namespace UserService.Middleware
+namespace Llp.User.Middleware
 {
     public class ExceptionMiddleware
     {
@@ -29,22 +29,22 @@ namespace UserService.Middleware
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            string message = "Internal Server Error";
+            string message = "Internal Server Error. " + ex.Message;
 
             if (ex is UnauthorizedException)
             {
                 context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                message = "Unauthorized";
+                message = "Unauthorized. " + ex.Message;
             }
             else if (ex is NotFoundException)
             {
                 context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                message = "Not Found";
+                message = "Not Found. " + ex.Message;
             }
             else if (ex is ValidationException)
             {
                 context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                message = "Validation Error";
+                message = "Validation Error. " + ex.Message;
             }
             // Add more exception types and corresponding status codes and messages here
 

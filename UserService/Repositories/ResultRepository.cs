@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using UserService.Models;
-using UserService.Repositories.Contracts;
+using Llp.User.Models;
+using Llp.User.Repositories.Contracts;
 
-namespace UserService.Repositories
+namespace Llp.User.Repositories
 {
     public class ResultRepository : RepositoryBase<Result>, IResultRepository
     {
@@ -15,5 +15,4 @@ namespace UserService.Repositories
             return await _context.Results.Where(r => r.UserId == userId).ToListAsync();
         }
     }
-}
 }
