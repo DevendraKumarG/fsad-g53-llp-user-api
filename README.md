@@ -21,7 +21,7 @@ cd fsad-g53-llp-user-api
 ### Configure Application
 Update the `appsettings.json` with your database connection details:
 
- "DefaultConnection": "server=localhost;port=3306;database=fsado-g53-db;uid=root;pwd=your_password"
+ "DefaultConnection": "server=localhost;port=3306;database=llp-dev;uid=root;pwd=your_password"
  
 Replace your_password with your MySQL root password.
 

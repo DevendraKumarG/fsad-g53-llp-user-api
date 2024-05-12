@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Llp.User.Controllers
 {
     [ApiController]
-    [Route("user")]
+    [Route("users")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
